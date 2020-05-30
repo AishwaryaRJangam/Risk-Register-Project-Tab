@@ -55,9 +55,9 @@ export function configureFakeBackend() {
             function createUser() {
                 const user = body();
 
-                if (users.find(x => x.email === user.email)) {
-                    return error(`User with the email ${user.email} already exists`);
-                }
+                // if (users.find(x => x.email === user.email)) {
+                //     return error(`User with the email ${user.email} already exists`);
+                // }
 
                 // assign user id and a few other properties then save
                 user.id = newUserId();
