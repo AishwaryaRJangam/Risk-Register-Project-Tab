@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { DatePicker } from '@/_components/date-picker';
 
 import { userService, alertService } from '@/_services';
 
@@ -15,31 +16,31 @@ function AddEdit({ history, match }) {
         projectManager: '',
         deliveryManager: '',
         projectStatus: '',
-        startDate: '',
+        startDate: new Date(),
         endDate : ''
     };
 
     const validationSchema = Yup.object().shape({
             customer: Yup.string()
-            .required('Risk Type is required'),
+            .required('Customer is required'),
 
             projectName: Yup.string()
-            .required('projectName is required'),
+            .required('Project Name is required'),
 
             projectManager: Yup.string()
-            .required('projectManager is required'),
+            .required('Project Manager is required'),
 
             deliveryManager: Yup.string()
-            .required('Email is required'),
+            .required('Delivery Manager is required'),
 
             projectStatus: Yup.string()
-            .required('projectStatus is required'),
+            .required('Project Status is required'),
 
             startDate: Yup.string()
-            .required('Age is required'),
+            .required('Start Date is required'),
 
             endDate: Yup.string()
-            .required('Status is required'),
+            .required('End Date is required'),
     });
 
     function onSubmit(fields, { setStatus, setSubmitting }) {
@@ -69,10 +70,7 @@ function AddEdit({ history, match }) {
                 alertService.success('User updated', { keepAfterRouteChange: true });
                 history.push('..');
             })
-            .catch(error => {
-                setSubmitting(false);
-                alertService.error(error);
-            });
+
     }
 
     return (
@@ -111,7 +109,7 @@ function AddEdit({ history, match }) {
                             </div>
 
                             <div className="form-group col-md-3">
-                                <label>Internal/External</label>
+                                <label>Project Name</label>
                                 <Field name="projectName" as="select" className={'form-control' + (errors.projectName && touched.projectName ? ' is-invalid' : '')}>
                                 <option value=""></option>
                                     <option value="A">A</option>
@@ -122,7 +120,7 @@ function AddEdit({ history, match }) {
                                 <ErrorMessage name="projectName" component="div" className="invalid-feedback" />
                             </div>
                             <div className="form-group col-md-3">
-                                <label>Owner</label>
+                                <label>Project Manager</label>
                                 <Field name="projectManager" as="select" className={'form-control' + (errors.projectManager && touched.projectManager ? ' is-invalid' : '')}>
                                     <option value=""></option>
                                     <option value="A">A</option>
@@ -133,7 +131,7 @@ function AddEdit({ history, match }) {
                                 <ErrorMessage name="projectManager" component="div" className="invalid-feedback" />
                             </div>
                             <div className="form-group col-md-3">
-                                <label>Severity</label>
+                                <label>Delivery Name</label>
                                 <Field name="deliveryManager" as="select" className={'form-control' + (errors.deliveryManager && touched.deliveryManager ? ' is-invalid' : '')}>
                                     <option value=""></option>
                                     <option value="A">A</option>
@@ -141,13 +139,13 @@ function AddEdit({ history, match }) {
                                     <option value="C">C</option>
                                     <option value="D">D</option>
                                 </Field>                                
-                                <ErrorMessage name="deliveryManager" component="div" className="invalid-feedback" />                                <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                                <ErrorMessage name="deliveryManager" component="div" className="invalid-feedback" />                                
                             </div>
                         </div>
                         <div className="form-row">
                             
                             <div className="form-group col-md-3">
-                                <label>Priority</label>
+                                <label>Project Status</label>
                                 <Field name="projectStatus" as="select" className={'form-control' + (errors.projectStatus && touched.projectStatus ? ' is-invalid' : '')}>
                                 <option value=""></option>
                                     <option value="A">A</option>
@@ -158,14 +156,20 @@ function AddEdit({ history, match }) {
                                 <ErrorMessage name="projectStatus" component="div" className="invalid-feedback" />
                             </div>
                             <div className="form-group col-md-3">
-                                <label>Risk Raised Date</label>
-                                <Field name="startDate" type="text" className={'form-control' + (errors.startDate && touched.startDate ? ' is-invalid' : '')} />
+                                <label>Start Date</label>
+                                {/* <Field name="startDate" type="text" className={'form-control' + (errors.startDate && touched.startDate ? ' is-invalid' : '')} /> */}
+                                <DatePicker
+                                name="startDate"
+                                className="form-control"
+                                format={"dd MMMM"}
+                                className={'form-control' + (errors.startDate && touched.startDate ? ' is-invalid' : '')} 
+                                />
                                 <ErrorMessage name="startDate" component="div" className="invalid-feedback" />
                             </div>
                             <div className="form-group col-md-3">
-                            <label>Age</label>
+                            <label>End Date</label>
                                 <Field name="endDate" type="text" className={'form-control' + (errors.endDate && touched.endDate ? ' is-invalid' : '')} />
-                                <ErrorMessage name="endDate" component="div" className="invalid-feedback" />                               <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                                <ErrorMessage name="endDate" component="div" className="invalid-feedback" />                             
                             </div>
                            
                         </div>
