@@ -168,7 +168,13 @@ function AddEdit({ history, match }) {
                             </div>
                             <div className="form-group col-md-3">
                             <label>End Date</label>
-                                <Field name="endDate" type="text" className={'form-control' + (errors.endDate && touched.endDate ? ' is-invalid' : '')} />
+                                {/* <Field name="endDate" type="text" className={'form-control' + (errors.endDate && touched.endDate ? ' is-invalid' : '')} /> */}
+                                <DatePicker
+                                name="endDate"
+                                className="form-control"
+                                format={"dd MMMM"}
+                                className={'form-control' + (errors.endDate && touched.endDate ? ' is-invalid' : '')}
+                                />
                                 <ErrorMessage name="endDate" component="div" className="invalid-feedback" />                             
                             </div>
                            
