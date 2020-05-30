@@ -1,5 +1,6 @@
 // global styles
-@import '~antd/dist/antd.css';
+// @import '~antd/dist/antd.css';
+@import "~@progress/kendo-theme-default/dist/all.css";
 
 a { cursor: pointer; }
 
@@ -44,4 +45,61 @@ button.btn {
     border: 1px solid black;
     height: 100px;
 
+}
+.k-datepicker {
+    font-size: 1em;
+    // width: 26em !important;
+    height: 2.2em;
+    border: none !important;
+    border-radius: 0.4em;
+    font-weight: 600;
+    border: none !important;
+}
+.k-datepicker:focus,
+.k-datepicker.k-state-focus {
+    border-color: white !important;
+}
+.k-datepicker {
+    font-size: 1.2rem !important;
+    font-weight: 600;
+    width: 100% !important;
+
+    .k-dropdown-wrap {
+        padding: 0 !important;
+
+        .k-input {
+            padding: 0.4em 0.8em !important;
+            height: 100% !important;
+        }
+
+        .k-clear-value {
+            right: 1.4em !important;
+        }
+    }
+
+    .k-clear-value {
+        top: 0.2em !important;
+    }
+}
+.k-animation-container {
+    z-index: 10003 // set the desired value based on the application requirements
+}
+.k-dateinput .k-dateinput-wrap .k-input, .k-dateinput .k-picker-wrap .k-input, .k-datepicker .k-dateinput-wrap .k-input, .k-datepicker .k-picker-wrap .k-input, .k-datetimepicker .k-dateinput-wrap .k-input, .k-datetimepicker .k-picker-wrap .k-input, .k-timepicker .k-dateinput-wrap .k-input, .k-timepicker .k-picker-wrap .k-input{
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    /* padding: .375rem .75rem; */
+    font-size: 1rem;
+    font-weight: normal;
+    /* line-height: 0; */
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    /* border: 1px solid #ced4da; */
+    /* border-radius: .25rem; */
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.MuiTableSortLabel-icon {
+    opacity: 1 !important;
 }
