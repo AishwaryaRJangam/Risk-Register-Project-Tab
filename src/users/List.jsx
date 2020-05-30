@@ -65,13 +65,8 @@ function List({ match }) {
          projectManager: user.projectManager,
          deliveryManager: user.deliveryManager,
          projectStatus: user.projectStatus,
-         startDate: user.startDate,
-         endDate:                                <button onClick={() => deleteUser(user.id)} className="btn btn-sm btn-danger btn-delete-user" disabled={user.isDeleting}>
-         {user.isDeleting 
-             ? <span className="spinner-border spinner-border-sm"></span>
-             : <span>Delete</span>
-         }
-     </button>,
+         startDate: user.startDate.toLocaleString(),
+         endDate: user.endDate,
        })
        return data;
      });
@@ -140,7 +135,7 @@ function List({ match }) {
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
+              setUsers((prevState) => {
                 const data = [...prevState.data];
                 data.push(newData);
                 return { ...prevState, data };
@@ -152,7 +147,7 @@ function List({ match }) {
             setTimeout(() => {
               resolve();
               if (oldData) {
-                setState((prevState) => {
+                setUsers((prevState) => {
                   const data = [...prevState.data];
                   data[data.indexOf(oldData)] = newData;
                   return { ...prevState, data };
@@ -164,7 +159,7 @@ function List({ match }) {
           new Promise((resolve) => {
             setTimeout(() => {
               resolve();
-              setState((prevState) => {
+              setUsers((prevState) => {
                 const data = [...prevState.data];
                 data.splice(data.indexOf(oldData), 1);
                 return { ...prevState, data };
