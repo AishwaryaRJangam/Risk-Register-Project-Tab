@@ -1,5 +1,4 @@
-// global styles
-// @import '~antd/dist/antd.css';
+@import '~antd/dist/antd.css';
 @import "~@progress/kendo-theme-default/dist/all.css";
 
 a { cursor: pointer; }
@@ -28,7 +27,7 @@ i.fa.fa-cloud-upload {
     color: dodgerblue;
 }
 .k-button.k-upload-button span {
-    display: none;
+    // margin: 0 auto;
 }
 input[type="file"] {
     text-align: center;
@@ -84,22 +83,37 @@ button.btn {
 .k-animation-container {
     z-index: 10003 // set the desired value based on the application requirements
 }
-.k-dateinput .k-dateinput-wrap .k-input, .k-dateinput .k-picker-wrap .k-input, .k-datepicker .k-dateinput-wrap .k-input, .k-datepicker .k-picker-wrap .k-input, .k-datetimepicker .k-dateinput-wrap .k-input, .k-datetimepicker .k-picker-wrap .k-input, .k-timepicker .k-dateinput-wrap .k-input, .k-timepicker .k-picker-wrap .k-input{
-    display: block;
-    width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    /* padding: .375rem .75rem; */
-    font-size: 1rem;
-    font-weight: normal;
-    /* line-height: 0; */
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    /* border: 1px solid #ced4da; */
-    /* border-radius: .25rem; */
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
 
 .MuiTableSortLabel-icon {
     opacity: 1 !important;
+}
+input[type="file"] {
+    text-align: center;
+    float: none;
+    margin-left: 32px;
+    margin-top: 12px;
+    margin-bottom: 6px;
+}
+.k-upload .k-upload-button {
+    min-width: 11em;
+    height: 40px !important;
+    font-size: 16px !important;
+    background: #6babea;
+    color: #000;
+    margin: 0 auto;
+    font-weight: 500;
+}
+.k-upload .k-dropzone .k-upload-status, .k-upload .k-dropzone .k-dropzone-hint {
+    color: #656565;
+    text-align: left;
+    opacity: 1;
+    margin-left: 12px;
+}
+.k-dropzone-hint{
+    display: none;
+}
+.k-upload .k-dropzone {
+    border: none !important;
+    border-color: #fff !important;
+    background-color: #fff;
 }
