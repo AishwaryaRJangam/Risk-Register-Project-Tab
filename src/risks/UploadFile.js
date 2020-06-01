@@ -11,6 +11,7 @@ function UploadFile() {
      <center> 
           
         <div><i class="fa fa-cloud-upload" aria-hidden="true"></i></div>
+        <h5>Drag and Drop Files Here to Upload </h5>
         <Upload
         batch={false}
         multiple={true}
